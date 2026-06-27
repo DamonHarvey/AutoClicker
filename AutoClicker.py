@@ -1,5 +1,6 @@
 import pyautogui
 import sys
+import os
 from PySide6.QtCore import QSize, Qt, QPoint
 from PySide6.QtGui import QMouseEvent, QIntValidator, QIcon
 from PySide6.QtWidgets import (
@@ -16,6 +17,15 @@ import keyboard
 from modules.click_util import ClickWatcher
 
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS  # type: ignore
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
 class AutoClicker(QMainWindow):
 
     def __init__(self) -> None:
@@ -28,7 +38,7 @@ class AutoClicker(QMainWindow):
 
     def init_window(self):
         self.setWindowTitle("Auto Clicker")
-        self.setWindowIcon(QIcon("icon.ico"))
+        self.setWindowIcon(QIcon(resource_path("icon.ico")))
         self.setFixedSize(QSize())
 
     def init_coordinates_widget(self):

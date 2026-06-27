@@ -1,2 +1,6 @@
 .venv
 __pycache__
+AutoClicker.spec
+to_exe.txt
+build
+dist
