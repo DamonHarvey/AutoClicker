@@ -1,4 +1,4 @@
-import icons_rc
+import resources_rc
 import pyautogui
 import sys
 from PySide6.QtCore import QSize, Qt, QPoint
@@ -29,7 +29,7 @@ class AutoClicker(QMainWindow):
 
     def init_window(self):
         self.setWindowTitle("Auto Clicker")
-        self.setWindowIcon(QIcon(":/icon.ico"))
+        self.setWindowIcon(QIcon(":/app_icon.ico"))
         self.setFixedSize(QSize(self.baseSize()))
 
     def init_coordinates_widget(self):

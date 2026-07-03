@@ -1,3 +1,9 @@
+# add looping
+# add if condition - check color
+# add break loop
+# add key press
+# add wait
+
 import sys
 import pyautogui
 from PySide6.QtGui import QIntValidator
@@ -17,12 +23,16 @@ from PySide6.QtWidgets import (
 from click_util import ClickWatcher
 
 
-class LineWidget(QWidget):
+class ClickWidget(QWidget):
 
-    def __init__(self, line_number: int) -> None:
+    def __init__(self, line_number: int, x: int = 0, y: int = 0) -> None:
         super().__init__()
 
         self._line_number: int = line_number
+
+        self.click_position = QPoint()
+        self.click_position.setX(x)
+        self.click_position.setY(y)
 
         self.setMaximumHeight(40)
 
@@ -44,11 +54,7 @@ class LineWidget(QWidget):
         pyautogui.click(self.click_position.x(), self.click_position.y())
 
     def _init_widgets(self):
-
         watcher = ClickWatcher()
-        self.click_position = QPoint()
-        self.click_position.setX(0)
-        self.click_position.setY(0)
 
         self.line_number_label = QLabel(f"{self._line_number} ")
         self.action_label = QLabel(
@@ -101,7 +107,7 @@ class testingWindow(QMainWindow):
         self.setCentralWidget(container)
 
         for i in range(1, 8):
-            w = LineWidget(i)
+            w = ClickWidget(i)
             layout.addWidget(w)
 
 

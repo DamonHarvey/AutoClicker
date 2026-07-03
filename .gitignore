@@ -3,5 +3,5 @@ __pycache__
 AutoClicker.spec
 to_exe.txt
 AutoClicker.exe
-icons.qrc
+resources.qrc
 pysidedeploy.spec
